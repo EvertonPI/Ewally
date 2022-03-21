@@ -26,8 +26,8 @@ export default function Account() {
     responseToken !== null ? JSON.parse(responseToken) : navigate("/");
   useEffect(() => {
     balanceAccount();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token]);
+    
+  });
   const balanceAccount = async () => {
     const response = await api.get("account/balance", {
       headers: {
@@ -45,7 +45,6 @@ export default function Account() {
         <Title>extrato</Title>
         <Line />
 
-        {/* Sinal de +  antes de uma string o javascript entende que é pra transforma string em numero */}
         <BackgrounBalance color={+balance >= 0 ? "color" : ""}>
           <TitleBalance>saldo da conta</TitleBalance>
           <BalanceIcon>
