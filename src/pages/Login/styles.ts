@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: ${theme.color.ternaria};
+  background: ${theme.color.backgroundLogin};
 `;
 
 export const Content = styled.form`
@@ -15,7 +15,7 @@ export const Content = styled.form`
   height: 330px;
   border-radius: 2rem;
   position: fixed;
-  background-color: ${theme.color.backgroundLogin};
+  background-color: ${theme.color.formLogin};
   box-shadow: 0 0 1rem rgb(35, 50, 95);
 
   @media (max-width: 480px) {
