@@ -23,7 +23,7 @@ export default function Account() {
 
   const responseToken = localStorage.getItem(TOKEN);
   const token =
-    responseToken !== null ? JSON.parse(responseToken) : 'navigate("/")';
+    responseToken !== null ? JSON.parse(responseToken) : navigate("/");
   useEffect(() => {
     balanceAccount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
