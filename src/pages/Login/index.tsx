@@ -1,3 +1,4 @@
+import { TOKEN } from "database/storage";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "services/api";
@@ -18,22 +19,21 @@ export default function Form() {
   const navigate = useNavigate();
 
   const handlerLoging = async () => {
-    navigate("/Account");
-    // const data = {
-    //   username: userLogin,
-    //   password: password,
-    // };
-    // try {
-    //   const login = await api.post("user/login", data);
-    //   const { token } = login.data;
-    //   localStorage.setItem("token", JSON.stringify(token));
-    //   navigate("/Account");
-    //   setUserLogin("");
-    //   setPassword("");
-    // } catch (error) {
-    //   alert("Por favor confira seu usuario e senha.");
-    //   console.log(error, "erro de Login");
-    // }
+    const data = {
+      username: userLogin,
+      password: password,
+    };
+    try {
+      const login = await api.post("user/login", data);
+      const { token } = login.data;
+      localStorage.setItem(TOKEN, JSON.stringify(token));
+      navigate("/Account");
+      setUserLogin("");
+      setPassword("");
+    } catch (error) {
+      alert("Por favor confira seu usuario e senha.");
+      console.log(error, "erro de Login");
+    }
   };
   return (
     <Container>

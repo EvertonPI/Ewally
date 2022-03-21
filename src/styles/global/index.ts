@@ -6,7 +6,7 @@ export const theme = {
     white: "#fffefc",
     backgroundLogin: "rgba(0,0,0,0.6)",
     alert: "#c00021",
-    backgroundStatement: "#e1e1e1",
+    backgroundStatement: "#fcfcfc",
     balancePositive: "#028a0f",
   },
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BackgrounBalance,
   BalanceIcon,
@@ -11,10 +11,34 @@ import {
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import Table from "components/Table";
 import { theme } from "styles/global";
+import api from "services/api";
+import { TOKEN } from "database/storage";
+import { useNavigate } from "react-router-dom";
 
 export default function Account() {
+  const navigate = useNavigate();
+
   const [visibleBalance, setVisibleBalance] = useState(false);
-  const [balance, setBalance] = useState("3000");
+  const [balance, setBalance] = useState(Number);
+
+  const responseToken = localStorage.getItem(TOKEN);
+  const token =
+    responseToken !== null ? JSON.parse(responseToken) : 'navigate("/")';
+  useEffect(() => {
+    balanceAccount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
+  const balanceAccount = async () => {
+    const response = await api.get("account/balance", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const { balance } = response.data;
+
+    setBalance(balance);
+  };
+
   return (
     <Container>
       <Content>
